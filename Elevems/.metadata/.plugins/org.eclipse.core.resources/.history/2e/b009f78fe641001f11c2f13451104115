@@ -1,0 +1,49 @@
+package com.example.demo.dto;
+
+import com.example.demo.entities.Eleve;
+
+public class EleveMapper {
+    
+    // Converts Eleve entity to EleveDTO
+    public static EleveDTO entityToDTO(Eleve eleve) {
+        if (eleve == null) {
+            return null;
+        }
+
+        return EleveDTO.builder()
+                         .id(eleve.getId())
+                         .age(eleve.getAge())
+                         .email(eleve.getEmail())
+                         .name(eleve.getName())
+                         .build();
+    }
+
+    // Converts Eleve entity to EleveDTO, with additional processing from another EleveDTO
+    public static EleveDTO entityToDTO(Eleve eleve, EleveDTO eleveDTO) {
+        if (eleve == null) {
+            return null;
+        }
+
+        return EleveDTO.builder()
+                         .eleveId(eleveDTO != null ? String.valueOf(eleveDTO.getEleveId()) : null) // Ensure eleveDTO is not null
+                         .name(eleve.getName())
+                         .email(eleve.getEmail())
+                         .age(eleve.getAge())
+                         .build();
+    }
+
+    // Converts EleveDTO to Eleve entity
+    public static Eleve dtoToEntity(EleveDTO dto) {
+        if (dto == null) {
+            return null;
+        }
+
+        return Eleve.builder()
+                         .eleveId(dto.getEleveId())
+                         .name(dto.getName())
+                         .email(dto.getEmail())
+                         .age(dto.getAge())
+                         .build();
+    }
+}
+

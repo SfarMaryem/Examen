@@ -1,0 +1,13 @@
+package com.example.demo.services;
+
+import java.util.List;
+
+import com.example.demo.dto.EleveDTO;
+
+public interface EleveInterface {
+	List<EleveDTO> findAll();
+	//EleveDTO findById(String id);
+	EleveDTO createEleve(EleveDTO eleveDto);
+	//EleveDTO updateEleve(EleveDTO eleveDto);
+    //void deleteById(String id);
+}

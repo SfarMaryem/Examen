@@ -1,0 +1,53 @@
+package com.example.demo.dto;
+
+import jakarta.persistence.Id;
+
+public class EleveDTO {
+	 
+	@Id
+	    
+	int eleveId;
+
+	String name;
+	String email;
+	Long age;
+
+	public EleveDTO() {
+		}
+    public EleveDTO(int eleveId, String name, String email, Long age) {
+			super();
+			this.eleveId = eleveId;
+			this.name = name;
+			this.email = email;
+			this.age = age;
+
+		}
+		public int getEleveId() {
+			return eleveId;
+		}
+		public void setEleveId(int eleveId) {
+			this.eleveId = eleveId;
+		}
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		public String getEmail() {
+			return email;
+		}
+		public void setEmail(String email) {
+			this.email = email;
+		}
+		public Long getAge() {
+			return age;
+		}
+		public void setAge(Long age) {
+			this.age = age;
+		}
+	     
+	}
+
+
+

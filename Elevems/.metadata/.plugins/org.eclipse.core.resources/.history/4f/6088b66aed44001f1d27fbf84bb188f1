@@ -1,0 +1,17 @@
+spring.application.name=Elevems
+server.port=8089
+
+spring.datasource.url=jdbc:mysql://localhost:3306/
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.username=root
+spring.datasource.password=    
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+
+logging.level.org.springframework=DEBUG
+logging.level.com.example.demo=DEBUG
+
+#spring.cloud.config.uri=http://localhost:8084
+#spring.cloud.config.profile=dev
+
+#eureka.client.service-url.defaultZone=http://localhost:8761/eureka

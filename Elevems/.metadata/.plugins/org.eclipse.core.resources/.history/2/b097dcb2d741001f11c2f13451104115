@@ -1,0 +1,24 @@
+package com.example.demo.dto;
+
+import jakarta.persistence.Id;
+
+
+
+@ToString
+@Builder
+public class EleveDTO {
+	 
+	@Id
+	    
+	int eleveId;
+
+	String name;
+	String email;
+	Long age;
+
+	
+	     
+	}
+
+
+

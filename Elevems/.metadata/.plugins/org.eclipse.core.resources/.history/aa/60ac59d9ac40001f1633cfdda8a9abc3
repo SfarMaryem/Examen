@@ -1,0 +1,51 @@
+package com.example.demo.services;
+
+import com.example.demo.dto.EleveDTO;
+import com.example.demo.dto.EleveMapper;
+import com.example.demo.entities.Eleve;
+import com.example.demo.repositories.EleveRepo;
+ 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+ 
+import java.util.List;
+import java.util.stream.Collectors;
+ 
+@Service
+public class EleveService implements EleveInterface{
+ 
+    @Autowired
+    private RestTemplate restTemplate;
+ 
+    @Autowired
+    private EleveRepo eleveRepository;
+ 
+ 
+  @Override
+ public List<EleveDTO> findAll() {
+        List<Eleve> eleve = eleveRepository.findAll();
+        return eleve.stream()
+                       .map(EleveMapper::EntitytoDTOA)
+                       .collect(Collectors.toList());
+    }
+ 
+    @Override
+    public EleveDTO findById(Long id) {
+ 
+        Eleve eleve = eleveRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("No Article found with this id: " + id));
+ 
+ 
+        BilletDTO billetDTO = restTemplate.getForObject("http://stock-ms/api/stock/getStock/" + eleve.getId_billet(), BilletDTO.class);
+ 
+        return EleveMapper.EntitytoDTOS(eleve,billetDTO);
+    }
+ 
+    @Override
+    public EleveDTO createEleve(EleveDTO eleveDto) {
+        Eleve eleve = EleveMapper.DTOtoEntity(eleveDto);
+        Eleve savedEleve = eleveRepository.save(eleve);
+        return EleveMapper.EntitytoDTOE(savedEleve);
+   }
+}
+

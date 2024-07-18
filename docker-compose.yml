@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  eureka:
+    image: eurekaserver-image
+    container_name: eureka
+    ports:
+      - "8761:8761"
+    networks:
+      - microservices-network
+
+  configserver:
+    image: configserver-image
+    container_name: configserver
+    ports:
+      - "8888:8888"
+    networks:
+      - microservices-network
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka
+
+  eleves:
+    image: eleves-image
+    container_name: eleves
+    ports:
+      - "8081:8081"
+    networks:
+      - microservices-network
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka
+      - SPRING_CLOUD_CONFIG_URI=http://configserver:8888
+
+  billet:
+    image: billet-image
+    container_name: billet
+    ports:
+      - "8082:8082"
+    networks:
+      - microservices-network
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka
+      - SPRING_CLOUD_CONFIG_URI=http://configserver:8888
+
+  gatewayapi:
+    image: gatewayapi-image
+    container_name: gatewayapi
+    ports:
+      - "8080:8080"
+    networks:
+      - microservices-network
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka
+      - SPRING_CLOUD_CONFIG_URI=http://configserver:8888
+
+networks:
+  microservices-network:
+    driver: bridge

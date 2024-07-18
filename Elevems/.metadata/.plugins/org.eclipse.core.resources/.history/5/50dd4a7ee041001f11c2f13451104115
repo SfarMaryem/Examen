@@ -1,0 +1,42 @@
+package com.example.demo.dto;
+
+import com.example.demo.entities.Eleve;
+
+public class EleveMapper {/*
+
+public static EleveDTO EntitytoDTOE(Eleve eleve) {
+    if (eleve == null) {
+        return null;
+    }
+
+    return EleveDTO.builder()
+                     .eleveId(eleve.getEleveId())
+                     .customerId(billet.getCustomerId())
+                     .amount(bill.getAmount())
+                     .build();
+}
+
+public static EleveDTO EntitytoDTOC(Eleve eleve, BilletDTO billetDTO) {
+    if (eleve == null) {
+        return null;
+    }
+
+    return BilletDTO.builder()
+                     .eleveId(eleve.getEleveId())
+                     .elId(String.valueOf(eleveDTO.getEleveId())) // Convert int to String if necessary
+                     .age(eleve.getAge())
+                     .build();
+}
+
+public static Eleve DTOtoEntity(EleveDTO dto) {
+    if (dto == null) {
+        return null;
+    }
+
+    return Eleve.builder()
+                     .eleveId(dto.getEleveId())
+                     .name(dto.getName())
+                     .age(dto.getAge())
+                     .email(dto.getEmail())
+                      .build();*/
+}

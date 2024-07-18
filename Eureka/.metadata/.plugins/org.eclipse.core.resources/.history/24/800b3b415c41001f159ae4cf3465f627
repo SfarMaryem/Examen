@@ -1,0 +1,4 @@
+FROM openjdk:17-jdk
+EXPOSE 8761
+ADD target/EurekaMagasin-0.0.1-SNAPSHOT.jar EurekaMagasin-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java", "-jar", "EurekaMagasin-0.0.1-SNAPSHOT.jar"]
